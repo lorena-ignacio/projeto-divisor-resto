@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Resto da divisão</title>
+   <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+   <header>
+      <h1>Calcule o resto de uma divisão</h1>
+   </header>
+   <main>
+      <form>
+         <fieldset>
+            <legend>Resto da Divisão</legend>
+
+            <label for="input-n1">Digite o dividendo<em>*</em></label>
+            <input type="number" name="input-n1" id="input-n1">
+
+            <label for="input-n2">Digite o divisor <em>*</em></label>
+            <input type="number" name="input-n2" id="input-n2">
+         </fieldset>
+      
+         <input type="button" id="botao-calcular-divisao"  value="Calcular" onclick="start()">
+      
+         <div id="resultado">
+            <p>Resultado: </p>
+         </div>
+      </form>
+   </main>
+
+   <script>
+      function start() {
+         var botaoCalcularDivisao = document.querySelector('input#botao-calcular-divisao')
+         botaoCalcularDivisao.addEventListener('click', restoDaDivisao)
+         restoDaDivisao() 
+         //deixando o codigo mais dinamico, faznedo o botao calcular responder com um click
+      }
+      
+      function calcularDivisao(n1, n2) {
+         return divisao = n1 / n2
+      }
+      
+      function calcularResto(n1, n2) {
+         return resto = n1 % n2
+      }
+
+      function restoDaDivisao() {
+         // No getElementById você so coloca o id.
+         // No querySeletor voce colocar tudo, olhe exemplo abaixo.
+
+         var n1 = document.getElementById('input-n1')
+         var n2 = document.getElementById('input-n2')
+         let res = document.querySelector('#resultado')
+
+         var n1 = Number.parseInt(n1.value) // Definindo o tipo númerico
+         var n2 = Number.parseInt(n2.value) // Definindo o tipo númerico
+
+         let divisao = calcularDivisao(n1, n2)
+         let resultDiv =  divisao.toFixed(1).replace('.', ',')
+
+         let resto = calcularResto(n1, n2)
+         let resultRest = resto
+
+         res.style.margin ='16px 0px'
+         res.textContent = `O quociente é ${resultDiv} restando ${resultRest}`
+
+         // res.innerHTML = `O resto da divisão é: ${resto}`
+         // Caso vc queira trocar o ponto por virgula em algum número, primeiro tem que utilizar o toFixed()
+      }
+   </script>
+</body>
+</html>
